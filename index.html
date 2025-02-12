@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        
+        <!-- Task Input Section -->
+        <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Add a new task">
+            
+            <!-- Dropdown to select Task Priority -->
+            <label for="prioritySelect">Priority:</label>
+            <select id="prioritySelect">
+                <option value="urgent">Urgent</option>
+                <option value="normal" selected>Normal</option>
+                <option value="low">Low</option>
+            </select>
+            
+            <!-- Add Task Button -->
+            <button id="addTaskButton">Add Task</button>
+        </div>
+        
+        <!-- Task List -->
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="service-worker.js"></script>
+</body>
+</html>
