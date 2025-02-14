@@ -10,26 +10,30 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
     const taskInput = document.getElementById("taskInput");
     const addTaskButton = document.getElementById("addTaskButton");
     const taskList = document.getElementById("taskList");
-    const prioritySelect = document.getElementById("prioritySelect");
 
     const loadTasks = () => {
         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
         taskList.innerHTML = "";
         tasks.forEach(task => {
             const li = document.createElement("li");
-            li.innerHTML = `${task.name} - <strong>Priority: ${task.priority}</strong> 
-                            <button class="deleteBtn">X</button> 
-                            <button class="editPriorityBtn">Edit Priority</button>`;
+            li.innerHTML = `${task.name} - <strong>Priority: </strong> 
+                            <select class="prioritySelect">
+                                <option value="urgent" ${task.priority === 'urgent' ? 'selected' : ''}>Urgent</option>
+                                <option value="normal" ${task.priority === 'normal' ? 'selected' : ''}>Normal</option>
+                                <option value="low" ${task.priority === 'low' ? 'selected' : ''}>Low</option>
+                            </select>
+                            <button class="deleteBtn">X</button>`;
+
+            const prioritySelect = li.querySelector(".prioritySelect");
+            prioritySelect.addEventListener("change", (e) => updateTaskPriority(task.id, e.target.value));
 
             const deleteBtn = li.querySelector(".deleteBtn");
             deleteBtn.addEventListener("click", () => deleteTask(task.id));
-
-            const editPriorityBtn = li.querySelector(".editPriorityBtn");
-            editPriorityBtn.addEventListener("click", () => editPriority(task.id));
 
             taskList.appendChild(li);
         });
@@ -37,13 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const addTask = () => {
         const taskName = taskInput.value.trim();
-        const priority = prioritySelect.value; // Get selected priority
 
         if (taskName) {
             const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-            const newTask = { id: Date.now(), name: taskName, priority };
-            console.log(newTask); // Check if priority is correctly assigned
-
+            const newTask = { id: Date.now(), name: taskName, priority: "normal" }; // Default priority is 'normal'
             tasks.push(newTask);
             localStorage.setItem("tasks", JSON.stringify(tasks));
             loadTasks();
@@ -58,18 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
         loadTasks();
     };
 
-    const editPriority = (id) => {
+    const updateTaskPriority = (id, newPriority) => {
         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        const task = tasks.find(t => t.id === id);
-        const newPriority = prompt("Enter new priority (urgent, normal, low):", task.priority);
-
-        if (newPriority && ["urgent", "normal", "low"].includes(newPriority.toLowerCase())) {
-            task.priority = newPriority;
-            localStorage.setItem("tasks", JSON.stringify(tasks));
-            loadTasks();
-        } else {
-            alert("Invalid priority! Please enter one of the following: urgent, normal, low.");
-        }
+        const updatedTasks = tasks.map(task => 
+            task.id === id ? { ...task, priority: newPriority } : task
+        );
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     };
 
     addTaskButton.addEventListener("click", addTask);

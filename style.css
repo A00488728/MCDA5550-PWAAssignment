@@ -1,33 +1,60 @@
+/* General body and container styling */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-transform: capitalize;
 }
 
 .container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    text-transform: capitalize;
 }
 
+/* Heading styling */
 h1 {
-    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Task input and button styling */
+.task-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #taskInput {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-button {
+#prioritySelect {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     width: 100%;
+    box-sizing: border-box;
+}
+
+#addTaskButton {
     padding: 10px;
+    font-size: 16px;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -35,31 +62,68 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#addTaskButton:hover {
     background-color: #45a049;
 }
 
+/* Task List */
 ul {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
 }
 
+/* Task item styling */
 li {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: #f9f9f9;
-    margin-bottom: 5px;
-    border-radius: 4px;
+    align-items: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-li button {
-    background-color: #f44336;
+li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Priority color-coding */
+.urgent {
+    color: red;
+    font-weight: bold;
+}
+
+.normal {
+    color: orange;
+    font-weight: bold;
+}
+
+.low {
+    color: green;
+    font-weight: bold;
+}
+
+/* Buttons within each task item */
+button {
+    padding: 5px 10px;
+    font-size: 14px;
     border: none;
-    padding: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-li button:hover {
-    background-color: #d32f2f;
+.deleteBtn {
+    background-color: #f44336;
+    color: white;
+    margin-right: 5px;
+    
 }
+
+.deleteBtn:hover {
+    background-color: #e53935;
+}
+
+
