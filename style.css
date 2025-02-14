@@ -8,7 +8,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+<<<<<<< HEAD
     text-transform: capitalize;
+=======
+>>>>>>> e96e5928cc95ca63c16848bd1d22b9550b7f8342
 }
 
 .container {
@@ -18,6 +21,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
+<<<<<<< HEAD
     text-transform: capitalize;
 }
 
@@ -44,6 +48,24 @@ h1 {
 }
 
 #prioritySelect {
+=======
+}
+
+/* Heading styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Task input and button styling */
+.task-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#taskInput {
+>>>>>>> e96e5928cc95ca63c16848bd1d22b9550b7f8342
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -52,6 +74,18 @@ h1 {
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
+=======
+#prioritySelect {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+>>>>>>> e96e5928cc95ca63c16848bd1d22b9550b7f8342
 #addTaskButton {
     padding: 10px;
     font-size: 16px;
@@ -119,11 +153,25 @@ button {
     background-color: #f44336;
     color: white;
     margin-right: 5px;
+<<<<<<< HEAD
     
+=======
+>>>>>>> e96e5928cc95ca63c16848bd1d22b9550b7f8342
 }
 
 .deleteBtn:hover {
     background-color: #e53935;
 }
 
+<<<<<<< HEAD
+=======
+.editPriorityBtn {
+    background-color: #ffa500;
+    color: white;
+}
+
+.editPriorityBtn:hover {
+    background-color: #ff8c00;
+}
+>>>>>>> e96e5928cc95ca63c16848bd1d22b9550b7f8342
 
